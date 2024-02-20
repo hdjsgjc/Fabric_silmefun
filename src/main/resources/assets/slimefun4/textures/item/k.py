@@ -12,7 +12,7 @@ for file_name in os.listdir(directory_path):
         textures = data.get("textures", {})
         layer0 = textures.get("layer0", "")
         if "myMod" in layer0:
-            layer0 = layer0.replace("myMod", "slimefun")
+            layer0 = layer0.replace("myMod", "slimefun4")
             textures["layer0"] = layer0
 
         with open(file_path, "w") as f:
