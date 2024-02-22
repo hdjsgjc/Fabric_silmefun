@@ -68,9 +68,11 @@ java {
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
+	duplicatesStrategy = 'INCLUDE'
+	tasks.withType(Jar) {
+		duplicatesStrategy = 'INCLUDE' // 或者其他处理策略，如 'EXCLUDE', 'FAIL', 'WARN'
 	}
+
 }
 
 // configure the maven publication
