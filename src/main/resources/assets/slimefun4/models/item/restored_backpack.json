@@ -2,6 +2,6 @@
   "parent": "item/generated",
   "author": "Den4enko",
   "textures": {
-    "layer0": "slimefun:slimefun/items/restored_backpack"
+    "layer0": "slimefun4:item/restored_backpack"
   }
 }

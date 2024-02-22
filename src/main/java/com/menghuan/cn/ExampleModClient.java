@@ -1,4 +1,4 @@
-package com.example;
+package com.menghuan.cn;
 
 import net.fabricmc.api.ClientModInitializer;
 

@@ -1,8 +1,20 @@
 {
   "item.slimefun4.ice": "ice",
   "item.slimefun4.backpack": "普通背包",
-  "item.slimefun4.tool": "工具"
-  "item.slimefun4.backpack_small": "小型背包"
-  "item.slimefun4.backpack_gilded": "镀金背包"
-  
+  "item.slimefun4.tool": "工具",
+  "item.slimefun4.backpack_small": "小型背包",
+  "item.slimefun4.backpack_gilded": "镀金背包",
+  "item.slimefun4.backpack_large": "大型背包",
+  "item.slimefun4.backpack_radiant": "金光闪闪的背包",
+  "item.slimefun4.backpack_woven": "编织背包",
+  "item.slimefun4.bandage": "绷带",
+  "item.slimefun4.cooler": "冰箱",
+  "item.slimefun4.medicine": "药",
+  "item.slimefun4.portable_craftingtabble": "便携式工作台",
+  "item.slimefun4.portable_dustbin": "便携式垃圾桶",
+  "item.slimefun4.rag": "破布",
+  "item.slimefun4.restored_backpack": "恢复背包",
+  "item.slimefun4.splint": "夹板",
+  "item.slimefun4.tape_measure": "卷尺",
+  "item.slimefun4.vitamins": "维生素"
 }

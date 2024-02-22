@@ -2,7 +2,7 @@
   "parent": "item/generated",
   "author": "RaulH22",
   "textures": {
-    "layer0": "slimefun:slimefun/items/medicine",
-    "layer1": "slimefun:slimefun/items/medicine"
+    "layer0": "slimefun4:item/medicine",
+    "layer1": "slimefun4:item/medicine"
   }
 }

@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "slimefun4",
+	"id": "slimefun",
 	"version": "${version}",
-	"name": "Example mod",
+	"name": "slimefun4",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -16,18 +16,15 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+          "com.menghuan.cn.ExampleMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+          "com.menghuan.cn.ExampleModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"slimefun4.mixins.json"
+
 	],
 	"depends": {
 		"fabricloader": ">=0.15.0",

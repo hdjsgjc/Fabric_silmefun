@@ -1,7 +1,7 @@
-package com.example;
+package com.menghuan.cn;
 
-import com.example.item.item;
-import com.example.item.itemGrops;
+import com.menghuan.cn.item.item;
+import com.menghuan.cn.item.itemGrops;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
