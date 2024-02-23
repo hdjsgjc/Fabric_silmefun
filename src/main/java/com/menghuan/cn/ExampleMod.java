@@ -1,5 +1,6 @@
 package com.menghuan.cn;
 
+import com.menghuan.cn.item.FoodItem;
 import com.menghuan.cn.item.item;
 import com.menghuan.cn.item.itemGrops;
 import net.fabricmc.api.ModInitializer;

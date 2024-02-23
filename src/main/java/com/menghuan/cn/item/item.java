@@ -27,7 +27,7 @@ public class item {
     public static final Item RESTORED_BACKPACK = ModItem("restored_backpack", new Item(new FabricItemSettings()));
     public static final Item SPLINT = ModItem("splint", new Item(new FabricItemSettings()));
     public static final Item TAPE_MEASURE = ModItem("tape_measure", new Item(new FabricItemSettings()));
-    public static final Item VITAMINS = ModItem("vitamins", new Item(new FabricItemSettings()));
+    public static final Item VITAMINS = ModItem("vitamins", new Item(new FabricItemSettings().food(FoodItem.VITAMINS)));
     
     private static Item ModItem(String name, Item item, RegistryKey<ItemGroup>... itemGroups) {
         Item registerITEM = Registry.register(Registries.ITEM, new Identifier(ExampleMod.MOD_ID, name), item);
