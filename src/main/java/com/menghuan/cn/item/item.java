@@ -1,6 +1,7 @@
 package com.menghuan.cn.item;
 
 import com.menghuan.cn.ExampleMod;
+import com.menghuan.cn.item.ToolItems.PortableCraftingtabble;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -21,7 +22,7 @@ public class item {
     public static final Item BANDAGE = ModItem("bandage", new Item(new FabricItemSettings()));
     public static final Item COOLER = ModItem("cooler", new Item(new FabricItemSettings()));
     public static final Item MEDICINE = ModItem("medicine", new Item(new FabricItemSettings()));
-    public static final Item PORTABLE_CRAFTINGTABBLE = ModItem("portable_craftingtabble", new Item(new FabricItemSettings()));
+    public static final Item PORTABLE_CRAFTINGTABBLE = ModItem("portable_craftingtabble", new PortableCraftingtabble(new FabricItemSettings().maxDamage(200)));
     public static final Item PORTABLE_DUSTBIN = ModItem("portable_dustbin", new Item(new FabricItemSettings()));
     public static final Item RAG = ModItem("rag", new Item(new FabricItemSettings()));
     public static final Item RESTORED_BACKPACK = ModItem("restored_backpack", new Item(new FabricItemSettings()));
