@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +26,7 @@ public class PortableCraftingtabble extends Item {
         if (!world.isClient()){
             BlockPos blockPos = context.getBlockPos();
             PlayerEntity player = context.getPlayer();
+            openCraftingtabble(player,blockPos);
             boolean foundBlock = false;
             for (int i = -64; i <= blockPos.getY() + 64; i++){
                 BlockState state = context.getWorld().getBlockState(blockPos.down(i));
@@ -50,5 +52,10 @@ public class PortableCraftingtabble extends Item {
 
     private boolean isRightBLOCK(BlockState state) {
         return state.isOf(Blocks.IRON_ORE);
+    }
+
+    public static void openCraftingtabble(PlayerEntity player,BlockPos pos) {
+       player.openHandledScreen((NamedScreenHandlerFactory) Blocks.CRAFTING_TABLE);
+
     }
 }
