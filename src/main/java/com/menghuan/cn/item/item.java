@@ -39,6 +39,6 @@ public class item {
     }
 
     public static void regModitem() {
-        // 在这里注册其他物品...
+
     }
 }
