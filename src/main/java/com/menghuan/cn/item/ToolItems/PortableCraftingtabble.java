@@ -2,17 +2,16 @@ package com.menghuan.cn.item.ToolItems;
 
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.CraftingScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
@@ -33,6 +32,21 @@ public class PortableCraftingtabble extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (!world.isClient()) {
             player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, playerEntity) -> new CraftingScreenHandler(syncId, playerInventory ) {
+                @Override
+                public void onClosed(PlayerEntity player) {
+                    super.onClosed(player);
+                    for (int i = 1; i < 10; i++) {
+                        Slot slot = ((CraftingScreenHandler) player.currentScreenHandler).getSlot(i);
+                        ItemStack itemStack = slot.getStack();
+                        if (!itemStack.isEmpty() && itemStack.getItem() != Items.AIR) {
+                            if (!player.getInventory().insertStack(itemStack)) {
+                                player.dropItem(itemStack, false);
+                            }
+
+                        }
+                    }
+                }
+
                 @Override
                 public void onContentChanged(Inventory inventory) {
                     if (player.currentScreenHandler instanceof CraftingScreenHandler) {
@@ -55,6 +69,7 @@ public class PortableCraftingtabble extends Item {
         return TypedActionResult.success(player.getStackInHand(hand));
     }
 
+
     public static void CrafManager(World world, DefaultedList<ItemStack> inputItems, PlayerEntity player) {
         RecipeManager recipeManager = world.getRecipeManager();
         CraftingInventory craftingInventory = new CraftingInventory(player.playerScreenHandler, 3, 3);
@@ -68,7 +83,7 @@ public class PortableCraftingtabble extends Item {
 
         // 查找配方
         RecipeEntry<CraftingRecipe> recipe = recipeManager.getFirstMatch(RecipeType.CRAFTING, craftingInventory, world).orElse(null);
-        if (recipe != null & inputItems != null) {
+        if (recipe != null && inputItems != null) {
             ItemStack result = recipe.value().craft(craftingInventory, world.getRegistryManager());
             CraftingScreenHandler craftingTable = (CraftingScreenHandler) player.currentScreenHandler;
             Slot outputSlot = craftingTable.getSlot(0);
@@ -81,3 +96,4 @@ public class PortableCraftingtabble extends Item {
     }
 
 }
+

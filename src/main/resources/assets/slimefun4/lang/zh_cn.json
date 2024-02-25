@@ -16,5 +16,6 @@
   "item.slimefun4.restored_backpack": "恢复背包",
   "item.slimefun4.splint": "夹板",
   "item.slimefun4.tape_measure": "卷尺",
-  "item.slimefun4.vitamins": "维生素"
+  "item.slimefun4.vitamins": "维生素",
+  "effect.slimefun4.antimicrobial_resistance" : "耐药性"
 }
