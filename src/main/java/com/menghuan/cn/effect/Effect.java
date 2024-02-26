@@ -1,22 +1,20 @@
-package com.menghuan.cn;
+package com.menghuan.cn.effect;
 
 import com.menghuan.cn.item.item;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 
 
 public class Effect extends StatusEffect {
     private LivingEntity entit;
 
-    protected Effect() {
+    public Effect() {
         super(StatusEffectCategory.HARMFUL,0xCD661D);
     }
     @Override
@@ -31,8 +29,8 @@ public class Effect extends StatusEffect {
         UseItemCallback.EVENT.register((player, world, hand) -> {
             ItemStack itemStack = entity.getStackInHand(hand);
             if (itemStack.getItem().isFood()) {
-                FoodComponent foodComponent = itemStack.getItem().getFoodComponent();
-                if (foodComponent != null && foodComponent == item.VITAMINS.getFoodComponent()) {
+                Item items = itemStack.getItem();
+                if (items != null && item.getSpecualValue(items)) {
                     if (!entity.hasStatusEffect(this)) {
                         return TypedActionResult.pass(itemStack);
                     } else {
@@ -47,4 +45,3 @@ public class Effect extends StatusEffect {
     }
 
 }
-

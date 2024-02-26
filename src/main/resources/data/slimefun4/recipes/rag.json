@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "C C",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "slimefun4:cloth"
+    },
+    "C": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "slimefun4:rag",
+    "count": 1
+  }
+}

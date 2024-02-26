@@ -1,14 +1,17 @@
 package com.menghuan.cn;
 
+import com.menghuan.cn.effect.Effect;
 import com.menghuan.cn.item.item;
 import com.menghuan.cn.item.itemGrops;
+import com.menghuan.cn.item.ToolItems.backpack;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-public class ExampleMod implements ModInitializer {
+public class slimefun4Mod implements ModInitializer {
 
 
 	public static final String MOD_ID = "slimefun4";

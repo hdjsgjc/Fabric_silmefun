@@ -1,6 +1,7 @@
 package com.menghuan.cn.item.ToolItems;
 
 
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.Inventory;
@@ -20,6 +21,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PortableCraftingtabble extends Item {
 
@@ -69,6 +73,12 @@ public class PortableCraftingtabble extends Item {
         return TypedActionResult.success(player.getStackInHand(hand));
     }
 
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("item.slimefun4.PortableCraftingtabble.tooltip"));
+        super.appendTooltip(stack, world, tooltip, context);
+    }
 
     public static void CrafManager(World world, DefaultedList<ItemStack> inputItems, PlayerEntity player) {
         RecipeManager recipeManager = world.getRecipeManager();

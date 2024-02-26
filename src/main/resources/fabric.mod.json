@@ -16,10 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "com.menghuan.cn.ExampleMod"
+          "com.menghuan.cn.slimefun4Mod"
 		],
 		"client": [
-          "com.menghuan.cn.ExampleModClient"
+			"com.menghuan.cn.slimefun4ModClient"
+		],
+		"fabric-datagen": [
+			"com.menghuan.cn.slimefun4ModDataGenerator"
 		]
 	},
 	"mixins": [

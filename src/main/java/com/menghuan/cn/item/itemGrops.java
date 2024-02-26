@@ -1,7 +1,6 @@
 package com.menghuan.cn.item;
 
-import com.menghuan.cn.ExampleMod;
-import com.menghuan.cn.item.item;
+import com.menghuan.cn.slimefun4Mod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class itemGrops {
     public static final ItemGroup SLIMEFUN_TOOL = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(ExampleMod.MOD_ID,"kfc"),
+            new Identifier(slimefun4Mod.MOD_ID,"kfc"),
             FabricItemGroup.builder().displayName(Text.translatable("item.slimefun4.tool"))
                     .icon(()-> new ItemStack(item.BACKPACK)).entries((displayContext, entries) -> {
                         entries.add(item.BACKPACK);
@@ -31,6 +30,7 @@ public class itemGrops {
                         entries.add(item.SPLINT);
                         entries.add(item.TAPE_MEASURE);
                         entries.add(item.VITAMINS);
+                        entries.add(item.CLOTH);
 
 
                     }).build());
