@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "com.menghuan.cn.slimefun4Mod"
+          "com.menghuan.cn.Slimefun4Mod"
 		],
 		"client": [
 			"com.menghuan.cn.slimefun4ModClient"

@@ -1,6 +1,6 @@
 package com.menghuan.cn.datagen;
 
-import com.menghuan.cn.item.item;
+import com.menghuan.cn.item.Items;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
@@ -13,6 +13,6 @@ public class ModRrecipes extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, item.RAG,RecipeCategory.MISC,item.VITAMINS);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, Items.RAG,RecipeCategory.MISC, Items.VITAMINS);
     }
 }

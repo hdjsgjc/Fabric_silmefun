@@ -35,7 +35,8 @@ public class PortableCraftingtabble extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (!world.isClient()) {
-            player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, playerEntity) -> new CraftingScreenHandler(syncId, playerInventory ) {
+            player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, playerEntity) ->
+                    new CraftingScreenHandler(syncId, playerInventory ) {
                 @Override
                 public void onClosed(PlayerEntity player) {
                     super.onClosed(player);

@@ -1,6 +1,6 @@
 package com.menghuan.cn.item;
 
-import com.menghuan.cn.slimefun4Mod;
+import com.menghuan.cn.Slimefun4Mod;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -18,17 +18,17 @@ import java.util.List;
 
 public class FoodItem extends Item {
     public static final FoodComponent vitamins = new FoodComponent.Builder().hunger(0).saturationModifier(0).alwaysEdible().
-             statusEffect(new StatusEffectInstance(slimefun4Mod.ANTIMICROBIAL_RESISTANCE,1200),1f)
+             statusEffect(new StatusEffectInstance(Slimefun4Mod.ANTIMICROBIAL_RESISTANCE,1200),1f)
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH,2),1f).snack().build();
 
     public static final FoodComponent medicine = new FoodComponent.Builder().hunger(0).saturationModifier(0).alwaysEdible().
-            statusEffect(new StatusEffectInstance(slimefun4Mod.ANTIMICROBIAL_RESISTANCE,1200),1f)
+            statusEffect(new StatusEffectInstance(Slimefun4Mod.ANTIMICROBIAL_RESISTANCE,1200),1f)
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH,2),1f).snack().build();
     public static final FoodComponent rag = new FoodComponent.Builder().hunger(0).saturationModifier(0).alwaysEdible().build();
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user){
-        if (user instanceof PlayerEntity && item.getSpecualValue(stack.getItem())){
+        if (user instanceof PlayerEntity && Items.getSpecualValue(stack.getItem())){
             user.removeStatusEffect(StatusEffects.POISON);
             user.removeStatusEffect(StatusEffects.WITHER);
             user.extinguish();

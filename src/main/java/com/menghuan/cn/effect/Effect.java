@@ -1,6 +1,6 @@
 package com.menghuan.cn.effect;
 
-import com.menghuan.cn.item.item;
+import com.menghuan.cn.item.Items;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -30,7 +30,7 @@ public class Effect extends StatusEffect {
             ItemStack itemStack = entity.getStackInHand(hand);
             if (itemStack.getItem().isFood()) {
                 Item items = itemStack.getItem();
-                if (items != null && item.getSpecualValue(items)) {
+                if (items != null && Items.getSpecualValue(items)) {
                     if (!entity.hasStatusEffect(this)) {
                         return TypedActionResult.pass(itemStack);
                     } else {
