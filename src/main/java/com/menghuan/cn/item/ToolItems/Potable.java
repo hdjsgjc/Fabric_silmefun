@@ -28,6 +28,8 @@ public class Potable extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (user instanceof  PlayerEntity && !world.isClient){
             user.openHandledScreen(new ExtendedScreenHandlerFactory() {
+
+
                 @Override
                 public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
 
@@ -40,7 +42,7 @@ public class Potable extends Item {
 
                 @Override
                 public Text getDisplayName() {
-                    return Text.of("Custom Screen");
+                    return Text.translatable("item.gui.potable");
                 }
             });
 

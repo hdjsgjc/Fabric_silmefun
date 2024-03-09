@@ -8,16 +8,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.text.Text;
 
 import static com.menghuan.cn.Slimefun4Mod.potableScreenHandlerScreenHandlerType;
 
 public class PotableScreenHandler extends ScreenHandler {
 
+    private final Text title;
     private Inventory inventory;
+
+
 
     public PotableScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         super(potableScreenHandlerScreenHandlerType, syncId);
         this.inventory = new SimpleInventory(1);
+        this.title = Text.of("My Custom Inventory");
         this.addSlot(new Slot(inventory, 0, 79, 32));
         int playerInvY = 79;
         int playerInvX = 8;
@@ -34,12 +39,33 @@ public class PotableScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int slotIndex) {
-        return ItemStack.EMPTY;
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
+        ItemStack newStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(invSlot);
+        if (slot != null && slot.hasStack()) {
+            ItemStack originalStack = slot.getStack();
+            newStack = originalStack.copy();
+            if (invSlot < this.inventory.size()) {
+                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
+                return ItemStack.EMPTY;
+            }
+            if (originalStack.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
+            }
+        }
+        return newStack;
     }
 
-
-
+    private void ClearItems(){
+        if (this.slots.get(0).getStack() != ItemStack.EMPTY){
+            this.slots.get(0).setStack(ItemStack.EMPTY);
+        }
+    }
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
