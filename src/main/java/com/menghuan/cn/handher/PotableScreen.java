@@ -34,6 +34,8 @@ public class PotableScreen extends HandledScreen<PotableScreenHandler> {
 
 
     }
+
+
     @Override
     protected void init() {
         this.titleX = 73;
@@ -43,5 +45,7 @@ public class PotableScreen extends HandledScreen<PotableScreenHandler> {
         super.init();
 
     }
+
+
 
 }

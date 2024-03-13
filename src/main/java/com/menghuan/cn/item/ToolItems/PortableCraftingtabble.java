@@ -36,7 +36,7 @@ public class PortableCraftingtabble extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (!world.isClient()) {
             player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, playerEntity) ->
-                    new CraftingScreenHandler(syncId, playerInventory ) {
+                    new CraftingScreenHandler(syncId, playerInventory) {
                 @Override
                 public void onClosed(PlayerEntity player) {
                     super.onClosed(player);
@@ -67,9 +67,10 @@ public class PortableCraftingtabble extends Item {
                         }
                         CrafManager(world,inputItems,player);
                     }
+
                 }
 
-            }, Text.of("便携式工作台")));
+            }, Text.translatable("item.portablecraftingtabble.gui.tiet")));
         }
         return TypedActionResult.success(player.getStackInHand(hand));
     }

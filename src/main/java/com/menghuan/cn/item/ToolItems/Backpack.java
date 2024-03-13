@@ -1,5 +1,6 @@
 package com.menghuan.cn.item.ToolItems;
 
+import com.menghuan.cn.handher.BackInventory;
 import com.menghuan.cn.handher.BackScteeHandler;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -9,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
@@ -34,12 +34,12 @@ public class Backpack extends Item {
 
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                    return new BackScteeHandler(syncId, playerInventory,new PacketByteBuf(Unpooled.buffer()));
+                    return new BackScteeHandler(syncId,playerInventory, new PacketByteBuf(Unpooled.buffer()));
                 }
 
                 @Override
                 public Text getDisplayName() {
-                    return Text.of("Custom Screen");
+                    return Text.translatable("item.backpack.gui.teit");
                 }
             });
         }

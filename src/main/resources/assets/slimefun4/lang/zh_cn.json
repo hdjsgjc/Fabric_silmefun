@@ -21,5 +21,8 @@
   "item.slimefun4.PortableCraftingtabble.tooltip": "右键使用",
   "item.slimefun4.VITAMINS.tip": "&恢复8点生命并消除中毒凋零效果熄灭身上的火",
   "item.slimefun4.cloth": "布",
-  "item.gui.potable" : "垃圾桶"
+  "item.gui.potable" : "垃圾桶",
+  "item.portablecraftingtabble.gui.tiet": "便携工作台",
+  "item.potable.gui.tiet": "便携垃圾桶",
+  "item.backpack.gui.teit": "背包"
 }

@@ -29,8 +29,10 @@ public class Slimefun4Mod implements ModInitializer {
 		ItemGrops.regItemGrops();
 		potableScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Slimefun4Mod.MOD_ID,
 				"potable_screen_handler"), new ExtendedScreenHandlerType<>(PotableScreenHandler::new));
+
 		screenHandlersblack = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Slimefun4Mod.MOD_ID,
 				"antimicrobial_resistance"), new ExtendedScreenHandlerType<>(BackScteeHandler::new));
+
 		Registry.register(Registries.STATUS_EFFECT,new Identifier(MOD_ID,"antimicrobial_resistance"),ANTIMICROBIAL_RESISTANCE);
 	}
 }
