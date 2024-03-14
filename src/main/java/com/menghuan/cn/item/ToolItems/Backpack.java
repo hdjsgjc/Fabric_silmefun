@@ -1,6 +1,5 @@
 package com.menghuan.cn.item.ToolItems;
 
-import com.menghuan.cn.handher.BackInventory;
 import com.menghuan.cn.handher.BackScteeHandler;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
