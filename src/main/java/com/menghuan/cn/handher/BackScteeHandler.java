@@ -14,11 +14,11 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
-import net.minecraft.nbt.NbtIo;
 import net.minecraft.util.Hand;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.util.collection.DefaultedList;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import static com.menghuan.cn.Slimefun4Mod.screenHandlersblack;
@@ -28,18 +28,18 @@ public class BackScteeHandler extends ScreenHandler {
 
     private final Inventory inventory;
 
-    public BackScteeHandler(int syncId, PlayerInventory playerInventory,PacketByteBuf packetByteBuf) {
+    public BackScteeHandler(int syncId, PlayerInventory playerInventory,PacketByteBuf packetByteBuf){
         super(screenHandlersblack, syncId);
-        this.inventory = new SimpleInventory(10);
+        this.inventory = new SimpleInventory(9);
         this.addSlot(new BlackpackSlot(inventory, 0, 8, 9));
         this.addSlot(new BlackpackSlot(inventory, 1, 26, 9));
         this.addSlot(new BlackpackSlot(inventory, 2, 44, 9));
         this.addSlot(new BlackpackSlot(inventory, 3, 62, 9));
         this.addSlot(new BlackpackSlot(inventory, 4, 80, 9));
         this.addSlot(new BlackpackSlot(inventory, 5, 98, 9));
-        this.addSlot(new BlackpackSlot(inventory, 7, 116, 9));
-        this.addSlot(new BlackpackSlot(inventory, 8, 134, 9));
-        this.addSlot(new BlackpackSlot(inventory, 9, 152, 9));
+        this.addSlot(new BlackpackSlot(inventory, 6, 116, 9));
+        this.addSlot(new BlackpackSlot(inventory, 7, 134, 9));
+        this.addSlot(new BlackpackSlot(inventory, 8, 152, 9));
         int playerInvY = 79;
         int playerInvX = 8;
         for (int m = 0; m < 3; ++m) {
@@ -51,9 +51,28 @@ public class BackScteeHandler extends ScreenHandler {
         for (int n = 0; n < 9; ++n) {
             this.addSlot(new Slot(playerInventory, n, playerInvX + n * 18, playerInvY + 58));
         }
-
-
-
+        NbtCompound nbtCompound = playerInventory.player.getStackInHand(Hand.MAIN_HAND).getOrCreateNbt();
+        if (nbtCompound != null) {
+            if (nbtCompound.contains("BackPackUUID")) {
+                String backpackUUID = nbtCompound.getString("BackPackUUID");
+                try {
+                    if (!(DataBackPack.OnnbtData(UUID.fromString(backpackUUID)) == null)){
+                        NbtCompound nbtCompound1 = DataBackPack.OnnbtData(UUID.fromString(backpackUUID));
+                        int u = 0;
+                        for (ItemStack i :  RecoverBackPack(nbtCompound1)){
+                            if (u <= 8){
+                                inventory.setStack(u,i);
+                            }else {
+                                break;
+                            }
+                            u++;
+                        }
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     @Override
@@ -89,13 +108,10 @@ public class BackScteeHandler extends ScreenHandler {
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
         if (player.getStackInHand(Hand.MAIN_HAND).getItem() instanceof Backpack){
-            System.out.println(8);
             try {
                 NbtCompound nbtCompound = player.getStackInHand(Hand.MAIN_HAND).getOrCreateNbt();
                 if (nbtCompound != null){
-                    System.out.println(7);
                     if (nbtCompound.contains("BackPackUUID")){
-                        System.out.println(6);
                         String backpackUUID = nbtCompound.getString("BackPackUUID");
                         DataBackPack.IOnbtData(saveToPlayerData(), UUID.fromString(backpackUUID));
                     }
@@ -114,15 +130,34 @@ public class BackScteeHandler extends ScreenHandler {
                 ItemStack itemStack = inventory.getStack(i);
                 NbtCompound itemTag = new NbtCompound();
                 if (!itemStack.isEmpty()) {
-                    itemStack.writeNbt(itemTag);
+                    if (itemStack != null){
+                        itemStack.writeNbt(itemTag);
+                    }
+
                 }
-                tag.put("Item" + i, itemTag);
+                tag.put("Item"+ i, itemTag);
             }
 
             return tag;
-
     }
-
+    public List<ItemStack> RecoverBackPack(NbtCompound nbtCompound){
+        int u = -1;
+        if (nbtCompound != null){
+            DefaultedList<ItemStack> inputItems = DefaultedList.ofSize(9, ItemStack.EMPTY);
+            for (String i : nbtCompound.getKeys()){
+                u++;
+                if (u <= 8){
+                    NbtCompound itemNbtCompound =  nbtCompound.getCompound(i);
+                    inputItems.set(u,ItemStack.fromNbt(itemNbtCompound));
+                    System.out.println(u);
+                }else {
+                    break;
+                }
+            }
+            return inputItems;
+        }
+        return null;
+    }
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
