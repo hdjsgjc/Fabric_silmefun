@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class Items {
     private static Set<Item> medicalItems = new HashSet<>();
-    public static final Item BACKPACK = ModItem("backpack", new Backpack(new FabricItemSettings()));
+    public static final Item BACKPACK = ModItem("backpack", new Backpack(new FabricItemSettings().maxCount(1)));
     public static final Item BACKPACK_GILDED = ModItem("backpack_gilded", new Item(new FabricItemSettings()));
     public static final Item BACKPACK_LARGE = ModItem("backpack_large", new Item(new FabricItemSettings()));
     public static final Item BACKPACK_RADIANT = ModItem("backpack_radiant", new Item(new FabricItemSettings()));

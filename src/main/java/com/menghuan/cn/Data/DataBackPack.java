@@ -1,21 +1,27 @@
 package com.menghuan.cn.Data;
 
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.world.PersistentState;
 
-public class DataBackPack extends PersistentState {
-    public DataBackPack() {
-        this.data = new NbtCompound();
-    }
-    @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
-        return null;
-    }
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.util.UUID;
 
-    private static final String TAG_NAME = "backpack__data";
-    private final NbtCompound data;
+public class DataBackPack{
+  public static void IOnbtData(NbtCompound nbtCompound, UUID uuid) throws IOException {
+      File file = new File(System.getProperty("user.dir") + File.separator + "BlockPackData" +File.separator + uuid.toString());
+      if (!file.exists()){
+          file.mkdirs();
 
+      }
+      File newFile = new File(System.getProperty("user.dir") + File.separator + "BlockPackData" +File.separator + uuid.toString() + File.separator +
+              uuid.toString() + ".json");
+      newFile.createNewFile();
+      FileWriter fileWriter = new FileWriter(newFile);
+      fileWriter.write(new Gson().toJson(nbtCompound));
+      fileWriter.close();
 
-
+  }
 
 }

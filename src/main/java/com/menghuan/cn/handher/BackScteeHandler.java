@@ -1,7 +1,9 @@
 
 package com.menghuan.cn.handher;
 
+import com.menghuan.cn.Data.DataBackPack;
 import com.menghuan.cn.handher.Slot.BlackpackSlot;
+import com.menghuan.cn.item.ToolItems.Backpack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -12,8 +14,15 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
+import net.minecraft.nbt.NbtIo;
+import net.minecraft.util.Hand;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.UUID;
 
 import static com.menghuan.cn.Slimefun4Mod.screenHandlersblack;
+import static net.minecraft.inventory.Inventories.writeNbt;
 
 public class BackScteeHandler extends ScreenHandler {
 
@@ -43,11 +52,7 @@ public class BackScteeHandler extends ScreenHandler {
             this.addSlot(new Slot(playerInventory, n, playerInvX + n * 18, playerInvY + 58));
         }
 
-        NbtCompound tag = new NbtCompound();
-        playerInventory.player.writeNbt(tag);
-        System.out.println(tag.getKeys());
-        System.out.println(tag);
-        System.out.println();
+
 
     }
 
@@ -83,13 +88,22 @@ public class BackScteeHandler extends ScreenHandler {
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        if (saveToPlayerData()!= null){
-            NbtCompound tag = new NbtCompound();
-            player.writeNbt(tag);
-            tag.put("backpackdata", saveToPlayerData());
-            player.readNbt(tag);
+        if (player.getStackInHand(Hand.MAIN_HAND).getItem() instanceof Backpack){
+            System.out.println(8);
+            try {
+                NbtCompound nbtCompound = player.getStackInHand(Hand.MAIN_HAND).getOrCreateNbt();
+                if (nbtCompound != null){
+                    System.out.println(7);
+                    if (nbtCompound.contains("BackPackUUID")){
+                        System.out.println(6);
+                        String backpackUUID = nbtCompound.getString("BackPackUUID");
+                        DataBackPack.IOnbtData(saveToPlayerData(), UUID.fromString(backpackUUID));
+                    }
+                }
 
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -108,9 +122,6 @@ public class BackScteeHandler extends ScreenHandler {
             return tag;
 
     }
-
-
-
 
     @Override
     public boolean canUse(PlayerEntity player) {

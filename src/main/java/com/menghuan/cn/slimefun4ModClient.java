@@ -11,6 +11,7 @@ public class slimefun4ModClient implements ClientModInitializer {
         HandledScreens.register(Slimefun4Mod.screenHandlersblack,BackScreen::new);
         HandledScreens.register(Slimefun4Mod.potableScreenHandlerScreenHandlerType, PotableScreen::new);
 
+
     }
 
 
