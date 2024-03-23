@@ -28,13 +28,6 @@ public class PotableScreen extends HandledScreen<PotableScreenHandler> {
         context.drawTexture(TEXTER,x,y,0,0,backgroundWidth,backgroundHeight,176,166);
 
     }
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
-
-
-    }
-
 
     @Override
     protected void init() {
@@ -45,7 +38,12 @@ public class PotableScreen extends HandledScreen<PotableScreenHandler> {
         super.init();
 
     }
-
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        super.render(context, mouseX, mouseY, delta);
+        renderBackground(context,mouseX,mouseY,delta);
+        drawMouseoverTooltip(context,mouseX,mouseY);
+    }
 
 
 }

@@ -28,8 +28,8 @@ public class Items {
     public static final Item BANDAGE = ModItem("bandage", new Item(new FabricItemSettings()));
     public static final Item COOLER = ModItem("cooler", new Item(new FabricItemSettings()));
     public static final Item MEDICINE = ModItem("medicine", new FoodItem(new FabricItemSettings().food(FoodItem.medicine)));
-    public static final Item PORTABLE_CRAFTINGTABBLE = ModItem("portable_craftingtabble", new PortableCraftingtabble(new FabricItemSettings()));
-    public static final Item PORTABLE_DUSTBIN = ModItem("portable_dustbin", new Potable(new FabricItemSettings()));
+    public static final Item PORTABLE_CRAFTINGTABBLE = ModItem("portable_craftingtabble", new PortableCraftingtabble(new FabricItemSettings().maxCount(1)));
+    public static final Item PORTABLE_DUSTBIN = ModItem("portable_dustbin", new Potable(new FabricItemSettings().maxCount(1)));
     public static final Item RAG = ModItem("rag", new rag(new FabricItemSettings().food(FoodItem.rag)));
     public static final Item RESTORED_BACKPACK = ModItem("restored_backpack", new Item(new FabricItemSettings()));
     public static final Item SPLINT = ModItem("splint", new Item(new FabricItemSettings()));
