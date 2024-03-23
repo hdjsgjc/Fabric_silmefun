@@ -30,21 +30,20 @@ public class DataBackPack{
 
   }
 
-  public static NbtCompound OnnbtData(UUID uuid) throws IOException {
+  public static NbtCompound OnnbtData(UUID uuid,Long b) throws IOException {
       File newFile = new File(System.getProperty("user.dir") + File.separator + "BlockPackData" +File.separator + uuid.toString() + File.separator +
               uuid.toString() + ".nbt");
       if (newFile.exists()){
           FileInputStream inputStream = new FileInputStream(newFile);
-          NbtTagSizeTracker sizeTracker = new NbtTagSizeTracker(5120L,5000);
-          NbtCompound nbtCompound = NbtIo.readCompressed(inputStream,sizeTracker);
-          return nbtCompound;
+          NbtTagSizeTracker sizeTracker = new NbtTagSizeTracker(b,5000);
+          return NbtIo.readCompressed(inputStream,sizeTracker);
       }
       return null;
   }
 
-    public static List<ItemStack> toItemStack(NbtCompound nbtCompound){
+    public static List<ItemStack> toItemStack(NbtCompound nbtCompound,int Slots){
         if (nbtCompound != null){
-            DefaultedList<ItemStack> inputItems = DefaultedList.ofSize(9, ItemStack.EMPTY);
+            DefaultedList<ItemStack> inputItems = DefaultedList.ofSize(Slots, ItemStack.EMPTY);
             for (String i : nbtCompound.getKeys()){
                 NbtCompound itemNbtCompound =  nbtCompound.getCompound(i);
                 int Slot = itemNbtCompound.getInt("Solt");

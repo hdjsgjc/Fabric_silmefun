@@ -1,7 +1,9 @@
 package com.menghuan.cn;
 
-import com.menghuan.cn.effect.Effect;
-import com.menghuan.cn.handher.BackScteeHandler;
+import com.menghuan.cn.effect.AntimicrobialResistance;
+import com.menghuan.cn.enchantment.Tetanus;
+import com.menghuan.cn.handher.BackPack.BackPackScreeHandler;
+import com.menghuan.cn.handher.BackPack.BackSmallScreeHandler;
 import com.menghuan.cn.handher.PotableScreenHandler;
 import com.menghuan.cn.item.ItemGrops;
 import com.menghuan.cn.item.Items;
@@ -18,9 +20,11 @@ public class Slimefun4Mod implements ModInitializer {
 
 	public static final String MOD_ID = "slimefun4";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static final Effect ANTIMICROBIAL_RESISTANCE = new Effect();
-    public static ScreenHandlerType<BackScteeHandler> screenHandlersblack = null;
+    public static final AntimicrobialResistance ANTIMICROBIAL_RESISTANCE = new AntimicrobialResistance();
+	public static Tetanus TETANUS = new Tetanus();
+    public static ScreenHandlerType<BackSmallScreeHandler> screenHandlersblack = null;
 	public static ScreenHandlerType<PotableScreenHandler> potableScreenHandlerScreenHandlerType = null;
+	public static ScreenHandlerType<BackPackScreeHandler> BackPackScreenHandlerScreenHandlerType = null;
 
 	@Override
 	public void onInitialize(){
@@ -31,8 +35,10 @@ public class Slimefun4Mod implements ModInitializer {
 				"potable_screen_handler"), new ExtendedScreenHandlerType<>(PotableScreenHandler::new));
 
 		screenHandlersblack = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Slimefun4Mod.MOD_ID,
-				"antimicrobial_resistance"), new ExtendedScreenHandlerType<>(BackScteeHandler::new));
-
+				"antimicrobial_resistance"), new ExtendedScreenHandlerType<>(BackSmallScreeHandler::new));
+		BackPackScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER,new Identifier(Slimefun4Mod.MOD_ID,
+				"sackpackscreenhandlerscreenhandler"),new ExtendedScreenHandlerType<>(BackPackScreeHandler::new));
+		Registry.register(Registries.ENCHANTMENT,new Identifier(Slimefun4Mod.MOD_ID,"teeanus"),TETANUS);
 		Registry.register(Registries.STATUS_EFFECT,new Identifier(MOD_ID,"antimicrobial_resistance"),ANTIMICROBIAL_RESISTANCE);
 	}
 }

@@ -1,9 +1,8 @@
 package com.menghuan.cn.item.ToolItems;
 
-import com.menghuan.cn.handher.BackScteeHandler;
+import com.menghuan.cn.handher.BackPack.BackSmallScreeHandler;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,11 +20,9 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 
-public class Backpack extends Item {
+public class BackpackSmall extends Item {
     private UUID UUIDs = UUID.randomUUID();
-    private BackScteeHandler backScteeHandler;
-
-    public Backpack(Settings settings) {
+    public BackpackSmall(Settings settings) {
         super(settings);
     }
 
@@ -41,13 +38,12 @@ public class Backpack extends Item {
 
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                    backScteeHandler = new BackScteeHandler(syncId,playerInventory, new PacketByteBuf(Unpooled.buffer()));
-                    return backScteeHandler;
+                    return new BackSmallScreeHandler(syncId,playerInventory, new PacketByteBuf(Unpooled.buffer()));
                 }
 
                 @Override
                 public Text getDisplayName() {
-                    return Text.translatable("item.backpack.gui.teit");
+                    return Text.translatable("item.backpack_small.gui.teit");
                 }
             });
         }
@@ -66,13 +62,5 @@ public class Backpack extends Item {
         }
     }
 
-
-    public void setItemUUID(UUID uuid){
-        this.UUIDs = uuid;
-    }
-
-    public UUID getItemUUID(){
-        return UUIDs;
-    }
 
 }

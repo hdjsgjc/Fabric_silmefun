@@ -11,10 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.TypedActionResult;
 
 
-public class Effect extends StatusEffect {
+public class AntimicrobialResistance extends StatusEffect {
     private LivingEntity entit;
 
-    public Effect() {
+    public AntimicrobialResistance() {
         super(StatusEffectCategory.HARMFUL,0xCD661D);
     }
     @Override
