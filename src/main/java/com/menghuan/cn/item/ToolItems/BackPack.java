@@ -49,7 +49,6 @@ public class BackPack extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(stack, world, entity, slot, selected);
         if (!world.isClient) {
             NbtCompound nbtCompound = stack.getOrCreateNbt();
             if (nbtCompound != null && !nbtCompound.contains("BackPackUUID")) {

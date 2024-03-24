@@ -1,9 +1,9 @@
-
 package com.menghuan.cn.handher.BackPack;
 
 import com.menghuan.cn.Data.DataBackPack;
+import com.menghuan.cn.util.Slimefun4Mod;
 import com.menghuan.cn.handher.Slot.BlackpackSlot;
-import com.menghuan.cn.item.ToolItems.BackpackSmall;
+import com.menghuan.cn.item.ToolItems.BackPackLarge;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -13,21 +13,17 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Hand;
 
 import java.io.IOException;
 import java.util.UUID;
 
-import static com.menghuan.cn.util.Slimefun4Mod.screenHandlersblack;
+public class BackPackLargeScreeHandler extends ScreenHandler {
 
-public class BackSmallScreeHandler extends ScreenHandler {
-
-    private final Inventory inventory;
-
-    public BackSmallScreeHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf){
-        super(screenHandlersblack, syncId);
-        this.inventory = new SimpleInventory(9);
+    public final Inventory inventory;
+    public BackPackLargeScreeHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
+        super(Slimefun4Mod.BackPackLargeScreeHandlerTye, syncId);
+        this.inventory = new SimpleInventory(27);
         this.addSlot(new BlackpackSlot(inventory, 0, 8, 9));
         this.addSlot(new BlackpackSlot(inventory, 1, 26, 9));
         this.addSlot(new BlackpackSlot(inventory, 2, 44, 9));
@@ -37,6 +33,24 @@ public class BackSmallScreeHandler extends ScreenHandler {
         this.addSlot(new BlackpackSlot(inventory, 6, 116, 9));
         this.addSlot(new BlackpackSlot(inventory, 7, 134, 9));
         this.addSlot(new BlackpackSlot(inventory, 8, 152, 9));
+        this.addSlot(new BlackpackSlot(inventory, 9, 8, 27));
+        this.addSlot(new BlackpackSlot(inventory, 10, 26, 27));
+        this.addSlot(new BlackpackSlot(inventory, 11, 44, 27));
+        this.addSlot(new BlackpackSlot(inventory, 12, 62, 27));
+        this.addSlot(new BlackpackSlot(inventory, 13, 80, 27));
+        this.addSlot(new BlackpackSlot(inventory, 14, 98, 27));
+        this.addSlot(new BlackpackSlot(inventory, 15, 116, 27));
+        this.addSlot(new BlackpackSlot(inventory, 16, 134, 27));
+        this.addSlot(new BlackpackSlot(inventory, 17, 152, 27));
+        this.addSlot(new BlackpackSlot(inventory, 18, 8, 45));
+        this.addSlot(new BlackpackSlot(inventory, 19, 26, 45));
+        this.addSlot(new BlackpackSlot(inventory, 20, 44, 45));
+        this.addSlot(new BlackpackSlot(inventory, 21, 62, 45));
+        this.addSlot(new BlackpackSlot(inventory, 22, 80, 45));
+        this.addSlot(new BlackpackSlot(inventory, 23, 98, 45));
+        this.addSlot(new BlackpackSlot(inventory, 24, 116, 45));
+        this.addSlot(new BlackpackSlot(inventory, 25, 134, 45));
+        this.addSlot(new BlackpackSlot(inventory, 26, 152, 45));
         int playerInvY = 79;
         int playerInvX = 8;
         for (int m = 0; m < 3; ++m) {
@@ -48,16 +62,17 @@ public class BackSmallScreeHandler extends ScreenHandler {
         for (int n = 0; n < 9; ++n) {
             this.addSlot(new Slot(playerInventory, n, playerInvX + n * 18, playerInvY + 58));
         }
+
         NbtCompound nbtCompound = playerInventory.player.getStackInHand(Hand.MAIN_HAND).getOrCreateNbt();
         if (nbtCompound != null) {
             if (nbtCompound.contains("BackPackUUID")) {
                 String backpackUUID = nbtCompound.getString("BackPackUUID");
                 try {
-                    NbtCompound nbtCompound1 = DataBackPack.OnnbtData(UUID.fromString(backpackUUID), 5000L);
+                    NbtCompound nbtCompound1 = DataBackPack.OnnbtData(UUID.fromString(backpackUUID),50000L);
                     if (nbtCompound1 != null){
                         int u = 0;
-                        for (ItemStack i : DataBackPack.toItemStack(nbtCompound1,9)){
-                            if (u <= 8){
+                        for (ItemStack i : DataBackPack.toItemStack(nbtCompound1,27)){
+                            if (u <= 26){
                                 inventory.setStack(u,i);
                             }else {
                                 break;
@@ -97,14 +112,9 @@ public class BackSmallScreeHandler extends ScreenHandler {
     }
 
     @Override
-    public void onSlotClick(int slotIndex, int button, SlotActionType actionType, PlayerEntity player) {
-        super.onSlotClick(slotIndex, button, actionType, player);
-    }
-
-    @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        if (player.getStackInHand(Hand.MAIN_HAND).getItem() instanceof BackpackSmall){
+        if (player.getStackInHand(Hand.MAIN_HAND).getItem() instanceof BackPackLarge){
             try {
                 NbtCompound nbtCompound = player.getStackInHand(Hand.MAIN_HAND).getOrCreateNbt();
                 if (nbtCompound != null){
@@ -125,5 +135,4 @@ public class BackSmallScreeHandler extends ScreenHandler {
     public boolean canUse(PlayerEntity player) {
         return true;
     }
-
 }

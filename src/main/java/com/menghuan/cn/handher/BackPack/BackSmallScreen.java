@@ -1,6 +1,6 @@
 package com.menghuan.cn.handher.BackPack;
 
-import com.menghuan.cn.Slimefun4Mod;
+import com.menghuan.cn.util.Slimefun4Mod;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;

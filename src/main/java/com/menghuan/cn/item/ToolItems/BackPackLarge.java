@@ -1,6 +1,7 @@
 package com.menghuan.cn.item.ToolItems;
 
-import com.menghuan.cn.handher.BackPack.BackSmallScreeHandler;
+import com.menghuan.cn.handher.BackPack.BackPackLargeScreeHandler;
+import com.menghuan.cn.handher.BackPack.BackPackScreeHandler;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.entity.Entity;
@@ -19,17 +20,13 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-
-public class BackpackSmall extends Item {
-    private UUID UUIDs = UUID.randomUUID();
-    public BackpackSmall(Settings settings) {
+public class BackPackLarge extends Item {
+    public BackPackLarge(Settings settings) {
         super(settings);
     }
-
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (user instanceof PlayerEntity && !world.isClient){
+        if (!world.isClient && user instanceof PlayerEntity) {
             user.openHandledScreen(new ExtendedScreenHandlerFactory() {
                 @Override
                 public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
@@ -38,12 +35,12 @@ public class BackpackSmall extends Item {
 
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                    return new BackSmallScreeHandler(syncId,playerInventory, new PacketByteBuf(Unpooled.buffer()));
+                    return new BackPackLargeScreeHandler(syncId, playerInventory, new PacketByteBuf(Unpooled.buffer()));
                 }
 
                 @Override
                 public Text getDisplayName() {
-                    return Text.translatable("item.backpack_small.gui.teit");
+                    return Text.translatable("item.slimefun4.backpack_large");
                 }
             });
         }
@@ -52,7 +49,8 @@ public class BackpackSmall extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient){
+        super.inventoryTick(stack, world, entity, slot, selected);
+        if (!world.isClient) {
             NbtCompound nbtCompound = stack.getOrCreateNbt();
             if (nbtCompound != null && !nbtCompound.contains("BackPackUUID")) {
                 nbtCompound.putString("BackPackUUID", UUID.randomUUID().toString());
@@ -60,6 +58,5 @@ public class BackpackSmall extends Item {
             }
         }
     }
-
 
 }

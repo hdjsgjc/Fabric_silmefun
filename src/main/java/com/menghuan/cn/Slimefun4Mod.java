@@ -2,6 +2,7 @@ package com.menghuan.cn;
 
 import com.menghuan.cn.effect.AntimicrobialResistance;
 import com.menghuan.cn.enchantment.Tetanus;
+import com.menghuan.cn.handher.BackPack.BackPackLargeScreeHandler;
 import com.menghuan.cn.handher.BackPack.BackPackScreeHandler;
 import com.menghuan.cn.handher.BackPack.BackSmallScreeHandler;
 import com.menghuan.cn.handher.PotableScreenHandler;
@@ -25,20 +26,23 @@ public class Slimefun4Mod implements ModInitializer {
     public static ScreenHandlerType<BackSmallScreeHandler> screenHandlersblack = null;
 	public static ScreenHandlerType<PotableScreenHandler> potableScreenHandlerScreenHandlerType = null;
 	public static ScreenHandlerType<BackPackScreeHandler> BackPackScreenHandlerScreenHandlerType = null;
+	public static ScreenHandlerType<BackPackLargeScreeHandler> BackPackLargeScreeHandlerTye = null;
 
 	@Override
 	public void onInitialize(){
 		LOGGER.info("Hello Fabric world!");
 		Items.regModitem();
 		ItemGrops.regItemGrops();
-		potableScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Slimefun4Mod.MOD_ID,
+		potableScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID,
 				"potable_screen_handler"), new ExtendedScreenHandlerType<>(PotableScreenHandler::new));
 
-		screenHandlersblack = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Slimefun4Mod.MOD_ID,
+		screenHandlersblack = Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID,
 				"antimicrobial_resistance"), new ExtendedScreenHandlerType<>(BackSmallScreeHandler::new));
-		BackPackScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER,new Identifier(Slimefun4Mod.MOD_ID,
+		BackPackScreenHandlerScreenHandlerType = Registry.register(Registries.SCREEN_HANDLER,new Identifier(MOD_ID,
 				"sackpackscreenhandlerscreenhandler"),new ExtendedScreenHandlerType<>(BackPackScreeHandler::new));
-		Registry.register(Registries.ENCHANTMENT,new Identifier(Slimefun4Mod.MOD_ID,"teeanus"),TETANUS);
+		BackPackLargeScreeHandlerTye = Registry.register(Registries.SCREEN_HANDLER,new Identifier(MOD_ID,
+				"backpacklargescreehandler"),new ExtendedScreenHandlerType<>(BackPackLargeScreeHandler::new));
+		Registry.register(Registries.ENCHANTMENT,new Identifier(MOD_ID,"teeanus"),TETANUS);
 		Registry.register(Registries.STATUS_EFFECT,new Identifier(MOD_ID,"antimicrobial_resistance"),ANTIMICROBIAL_RESISTANCE);
 	}
 }

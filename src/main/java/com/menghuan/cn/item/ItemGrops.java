@@ -1,6 +1,6 @@
 package com.menghuan.cn.item;
 
-import com.menghuan.cn.Slimefun4Mod;
+import com.menghuan.cn.util.Slimefun4Mod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

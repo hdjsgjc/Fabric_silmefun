@@ -1,6 +1,6 @@
 package com.menghuan.cn.item;
 
-import com.menghuan.cn.Slimefun4Mod;
+import com.menghuan.cn.util.Slimefun4Mod;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;

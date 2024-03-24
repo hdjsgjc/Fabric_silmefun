@@ -1,10 +1,9 @@
 {
-  "item.slimefun4.ice": "ice",
   "item.slimefun4.backpack": "普通背包",
   "item.slimefun4.tool": "工具",
   "item.slimefun4.backpack_small": "小型背包",
   "item.slimefun4.backpack_gilded": "镀金背包",
-  "item.slimefun4.backpack_large": "大型背包",
+  "item.slimefun4.backpack_large": "中型背包",
   "item.slimefun4.backpack_radiant": "金光闪闪的背包",
   "item.slimefun4.backpack_woven": "编织背包",
   "item.slimefun4.bandage": "绷带",

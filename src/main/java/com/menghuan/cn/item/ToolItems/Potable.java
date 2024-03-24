@@ -39,9 +39,7 @@ public class Potable extends Item {
                 @NotNull
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                    return new PotableScreenHandler(syncId, playerInventory, new PacketByteBuf(Unpooled.buffer())){
-
-                    };
+                    return new PotableScreenHandler(syncId, playerInventory, new PacketByteBuf(Unpooled.buffer()));
                 }
             });
         }

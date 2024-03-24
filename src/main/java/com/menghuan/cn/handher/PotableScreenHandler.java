@@ -11,7 +11,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 
-import static com.menghuan.cn.Slimefun4Mod.potableScreenHandlerScreenHandlerType;
+import static com.menghuan.cn.util.Slimefun4Mod.potableScreenHandlerScreenHandlerType;
 
 public class PotableScreenHandler extends ScreenHandler {
 
@@ -62,6 +62,9 @@ public class PotableScreenHandler extends ScreenHandler {
             } else {
                 slot.markDirty();
             }
+        }
+        if (inventory.getStack(0) != ItemStack.EMPTY){
+            inventory.setStack(0,ItemStack.EMPTY);
         }
         return newStack;
     }
