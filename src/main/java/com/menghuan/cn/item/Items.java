@@ -1,7 +1,7 @@
 package com.menghuan.cn.item;
 
 import com.menghuan.cn.item.ToolItems.*;
-import com.menghuan.cn.util.Slimefun4Mod;
+import com.menghuan.cn.Slimefun4Mod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -21,7 +21,7 @@ public class Items {
     public static final Item BACKPACK_LARGE = ModItem("backpack_large", new BackPackLarge(new FabricItemSettings().maxCount(1)));
     public static final Item BACKPACK_RADIANT = ModItem("backpack_radiant", new Item(new FabricItemSettings()));
     public static final Item BACKPACK_SMALL = ModItem("backpack_small", new BackpackSmall(new FabricItemSettings().maxCount(1)));
-    public static final Item BACKPACK_WOVEN = ModItem("backpack_woven", new Item(new FabricItemSettings()));
+    public static final Item BACKPACK_WOVEN = ModItem("backpack_woven", new BackPackWoven(new FabricItemSettings().maxCount(1)));
     public static final Item BANDAGE = ModItem("bandage", new Item(new FabricItemSettings()));
     public static final Item COOLER = ModItem("cooler", new Item(new FabricItemSettings()));
     public static final Item MEDICINE = ModItem("medicine", new FoodItem(new FabricItemSettings().food(FoodItem.medicine)));
