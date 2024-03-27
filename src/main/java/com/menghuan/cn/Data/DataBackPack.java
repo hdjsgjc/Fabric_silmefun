@@ -7,12 +7,10 @@ import net.minecraft.nbt.NbtIo;
 import net.minecraft.nbt.NbtTagSizeTracker;
 import net.minecraft.util.collection.DefaultedList;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.UUID;
+import java.util.zip.GZIPInputStream;
 
 public class DataBackPack{
   public static void IOnbtData(NbtCompound nbtCompound, UUID uuid) throws IOException {
@@ -30,12 +28,12 @@ public class DataBackPack{
 
   }
 
-  public static NbtCompound OnnbtData(UUID uuid,Long b) throws IOException {
+  public static NbtCompound OnnbtData(UUID uuid) throws IOException {
       File newFile = new File(System.getProperty("user.dir") + File.separator + "BlockPackData" +File.separator + uuid.toString() + File.separator +
               uuid.toString() + ".nbt");
       if (newFile.exists()){
           FileInputStream inputStream = new FileInputStream(newFile);
-          NbtTagSizeTracker sizeTracker = new NbtTagSizeTracker(b,5000);
+          NbtTagSizeTracker sizeTracker = new NbtTagSizeTracker(getNbtFile(newFile) + 5000,5000);
           return NbtIo.readCompressed(inputStream,sizeTracker);
       }
       return null;
@@ -72,6 +70,29 @@ public class DataBackPack{
 
         return tag;
     }
+
+    public static long getNbtFile(File file) {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            GZIPInputStream gis = new GZIPInputStream(new BufferedInputStream(fis));
+            int bufferSize = 1024;
+            byte[] buffer = new byte[bufferSize];
+            int bytesRead;
+            long totalSize = 0;
+            while ((bytesRead = gis.read(buffer, 0, bufferSize)) != -1) {
+                totalSize += bytesRead;
+            }
+
+            gis.close();
+            return totalSize * 1024;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 
 
 }

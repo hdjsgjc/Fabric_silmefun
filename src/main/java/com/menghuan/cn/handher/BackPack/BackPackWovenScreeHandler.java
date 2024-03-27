@@ -3,7 +3,6 @@ package com.menghuan.cn.handher.BackPack;
 import com.menghuan.cn.Data.DataBackPack;
 import com.menghuan.cn.Slimefun4Mod;
 import com.menghuan.cn.handher.Slot.BlackpackSlot;
-import com.menghuan.cn.item.ToolItems.BackPack;
 import com.menghuan.cn.item.ToolItems.BackPackWoven;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,7 +21,7 @@ import java.util.UUID;
 public class BackPackWovenScreeHandler extends ScreenHandler {
     private final Inventory inventory;
     public BackPackWovenScreeHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
-        super(Slimefun4Mod.BackPackWovenScreeHandler, syncId);
+        super(Slimefun4Mod.BackPackWovenScreeHandlerTye, syncId);
         this.inventory = new SimpleInventory(36);
         this.addSlot(new BlackpackSlot(inventory, 0, 8, 9));
         this.addSlot(new BlackpackSlot(inventory, 1, 26, 9));
@@ -78,7 +77,7 @@ public class BackPackWovenScreeHandler extends ScreenHandler {
             if (nbtCompound.contains("BackPackUUID")) {
                 String backpackUUID = nbtCompound.getString("BackPackUUID");
                 try {
-                    NbtCompound nbtCompound1 = DataBackPack.OnnbtData(UUID.fromString(backpackUUID),50000L);
+                    NbtCompound nbtCompound1 = DataBackPack.OnnbtData(UUID.fromString(backpackUUID));
                     if (nbtCompound1 != null){
                         int u = 0;
                         for (ItemStack i : DataBackPack.toItemStack(nbtCompound1,36)){

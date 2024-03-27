@@ -12,6 +12,6 @@ public class BlackpackSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return stack.getItem() != Items.BACKPACK | stack.getItem() != Items.BACKPACK;
+        return true;
     }
 }

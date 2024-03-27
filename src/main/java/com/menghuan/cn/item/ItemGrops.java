@@ -1,5 +1,6 @@
 package com.menghuan.cn.item;
 
+import com.menghuan.cn.Block.ItemBlocklocks;
 import com.menghuan.cn.Slimefun4Mod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -31,6 +32,7 @@ public class ItemGrops {
                         entries.add(Items.TAPE_MEASURE);
                         entries.add(Items.VITAMINS);
                         entries.add(Items.CLOTH);
+                        entries.add(ItemBlocklocks.EnhancedWorkbench);
 
 
                     }).build());
