@@ -13,7 +13,7 @@ import com.menghuan.cn.Slimefun4Mod;
 
 public class ItemBlocklocks {
 
-    public static final Block EnhancedWorkbench = registryBlock("enhancedworkbench",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public static final Block EnhancedWorkbench = registryBlock("enhancedworkbench",new EnhancedWorkbench(FabricBlockSettings.create().strength(4.0f)));
 
    public static Block registryBlock(String name, Block block){
        registryBlockItem(name,block);

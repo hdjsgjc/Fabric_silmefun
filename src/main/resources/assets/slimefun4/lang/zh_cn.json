@@ -25,5 +25,6 @@
   "item.potable.gui.tiet": "便携垃圾桶",
   "item.backpack.gui.teit": "背包",
   "item.backpack_small.gui.teit": "小型背包",
-  "enchantment.slimefun4.teeanus": "破伤风"
+  "enchantment.slimefun4.teeanus": "破伤风",
+  "block.slimefun4.enhancedworkbench": "增强型工作台"
 }
